@@ -23,20 +23,30 @@ if(document.querySelector(".admin-index")){
         document.querySelector(".config-wrapper").classList.add("hidden");
         document.querySelector(".prices-wrapper").classList.add("hidden");
     }
-    let addHall = document.querySelector(".add-hall");
-    addHall.addEventListener("submit", (e)=>{
+    let hallNumber = document.querySelector(".conf-step__selectors-box").childElementCount + 1;
+    console.log(hallNumber);
+    let addForm = document.querySelector(".add-form");
+    addForm.addEventListener("submit", (e)=>{
         e.preventDefault();
-        let hallNumber = document.querySelector(".conf-step__selectors-box").childElementCount + 1;
         let xhr = new XMLHttpRequest();
         xhr.open("POST", "/halls");
+        
+        var meta = document.getElementsByTagName('meta'); 
+        for (let i=0; i<meta.length; i++) { 
+            if (meta[i].getAttribute("name") == "csrf-token") {  
+                xhr.setRequestHeader("X-CSRF-Token", meta[i].getAttribute("content"));
+            } 
+        }
         let data = {
-            number: hallNumber,
-            seats: JSON.stringify([])
+            "number": JSON.stringify(hallNumber),
+            "seats": JSON.stringify([])
         }
         let formData = new FormData();
-        for ( let key in data ) {
-            formData.append(key, data[key]);
+
+        for (let key in data){
+            formData.append(key, data[key])
         }
+        
         xhr.send(formData);
     })
 }

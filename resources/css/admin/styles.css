@@ -582,4 +582,8 @@ textarea.conf-step__input {
   color: #ff0000;
   font-weight: 600;
 }
+
+.hidden{
+  display: none;
+}
 /*# sourceMappingURL=styles.css.map */

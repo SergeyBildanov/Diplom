@@ -5,10 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
   <title>ИдёмВКино</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
-
+  <meta name="csrf-token" content="{{{ csrf_token() }}}">
   @vite(['resources/sass/app.scss','resources/js/app.js'])
 </head>
 
@@ -27,15 +26,16 @@
         <p class="conf-step__paragraph">Доступные залы:</p>
         <ul class="conf-step__list">
           @foreach($halls as $hall)
-            <li>Зал {$hall->number}
+            <li>Зал {{$hall->number}}
               <button class="conf-step__button conf-step__button-trash"></button>
             </li>
           @endforeach
         </ul>
-        <form action="/halls" method="POST">
+        <form action="/halls" method="POST" class="add-form">
           @csrf
           <button class="conf-step__button conf-step__button-accent add-hall">Создать зал</button>
         </form>
+        
       </div>
     </section>
     
@@ -47,7 +47,7 @@
         <p class="conf-step__paragraph">Выберите зал для конфигурации:</p>
         <ul class="conf-step__selectors-box">
             @foreach($halls as $hall)
-              <li><input type="radio" class="conf-step__radio" name="chairs-hall" value="Зал 1" checked><span class="conf-step__selector">Зал {$hall->number}</span></li>
+              <li><input type="radio" class="conf-step__radio" name="chairs-hall" value="Зал 1" checked><span class="conf-step__selector">Зал {{$hall->number}}</span></li>
             @endforeach
         </ul>
         <div class="config-wrapper">
@@ -191,8 +191,8 @@
             @foreach($movies as $movie)
               <div class="conf-step__movie">
                 <img class="conf-step__movie-poster" alt="poster" src="{{$movie->poster}}">
-                <h3 class="conf-step__movie-title">{$movie->name}</h3>
-                <p class="conf-step__movie-duration">{$movie->length}</p>
+                <h3 class="conf-step__movie-title">{{$movie->name}}</h3>
+                <p class="conf-step__movie-duration">{{$movie->length}}</p>
               </div>
             @endforeach           
         </div>
@@ -200,14 +200,15 @@
         <div class="conf-step__seances">
           @foreach($seances as $seance)
             <div class="conf-step__seances-hall">
-            <h3 class="conf-step__seances-title">Зал {$seance->hall}</h3>
+            <h3 class="conf-step__seances-title">Зал {{$seance["hall"]}}</h3>
             <div class="conf-step__seances-timeline">
-              @foreach($seance.seances as $s)
+            @foreach($seance["films"] as $s)
                 <div class="conf-step__seances-movie" style="width: 60px; background-color: rgb(133, 255, 137); left: 0;">
-                <p class="conf-step__seances-movie-title">{$seance->movie}</p>
-                <p class="conf-step__seances-movie-start">{$seance->start}</p>
+                <p class="conf-step__seances-movie-title">{{ $s->movie }}</p>
+                <p class="conf-step__seances-movie-start">{{ $s->start }}</p>
               </div>
-              @endforeach              
+              @endforeach   
+                    
             </div>
           </div>
           @endforeach

@@ -16,9 +16,9 @@ class AdminController extends Controller
         foreach($halls as $hall){
             $item = [
                 "hall"=>$hall->number,
-                "seances"=>$hall->seances
+                "films"=>$hall->seances
             ];
-            array_push($seances, $hall->seances);
+            array_push($seances, $item);
         }
 
         return view("admin.index", [

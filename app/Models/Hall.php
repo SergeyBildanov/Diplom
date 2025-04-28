@@ -12,6 +12,6 @@ class Hall extends Model
     'seats',
    ];
    public function seances(){
-      return $this->hasMany(Seance::class, 'group_id', 'id');
+      return $this->hasMany(Seance::class, 'number', 'hall');
   }
 }
