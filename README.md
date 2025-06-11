@@ -12,8 +12,8 @@
 
 ## Как войти в учетную запись администратора:
 ### Стандартная УЗ:
-* login: serg@mail.ru
-* password: 1234
+* login: admin@mail.ru
+* password: admin
 
 Можно создать свою учетную запись, пройдя регистрацию на localhost:8000/register
 
