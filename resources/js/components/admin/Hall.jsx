@@ -1,13 +1,17 @@
 import HallRow from "./HallRow";
-function Hall({n,m}){
+function Hall({n=null,m=null, seats=null}){
     let list = [];
-  
-    for(let i=0; i<n; i++){
+    if(seats){
+      list = seats;
+    }
+    else{
+      for(let i=0; i<n; i++){
         let newList = []; 
         for(let j=0; j<m; j++){
             newList.push("standart");
         }
         list.push(newList);
+    }
     }
   
     return(

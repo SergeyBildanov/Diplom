@@ -3,7 +3,7 @@ import MakeSelector from "./MakeSelector.jsx";
 import Hall from "./Hall.jsx";
 import MovieList from "./MovieList.jsx";
 import Timeline from "./Timeline.jsx";
-import { useEffect } from "react";
+import { useEffect } from "react";jkik
 
 function App(){
     let halls = [];

@@ -14,4 +14,8 @@ class Movie extends Model
         "length",
         "origin",
     ];
+
+    public function seances(){
+        return $this->hasMany(Seance::class, 'name', 'movie');
+    }
 }

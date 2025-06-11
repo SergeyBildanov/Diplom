@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('halls', function (Blueprint $table) {
             $table->id();
-            $table->string('number');
+            $table->integer('number');
             $table->string('seats')->nullable();
+            $table->integer("standartCosts");
+            $table->integer("vipCosts");
+            $table->boolean("isActive");
             $table->timestamps();
         });
     }

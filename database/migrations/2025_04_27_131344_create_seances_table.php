@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('seances', function (Blueprint $table) {
             $table->id();
+            $table->integer("hall");
+            $table->integer("movie");
+            $table->date("day");
+            $table->time("start");
+            $table->time("finish");
             $table->timestamps();
         });
     }

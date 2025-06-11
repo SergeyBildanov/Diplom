@@ -6,7 +6,7 @@ function Seances({hall, seances}){
                 {
                     seances.map((item, index)=>{
                         return(
-                            <li class="movie-seances__time-block" key={index}><a class="movie-seances__time" href="hall.html">{item}</a></li>
+                            <li class="movie-seances__time-block" data-id={item.id} key={index}><a class="movie-seances__time" href={`/seances/${item.id}`}>{item.time}</a></li>
                         )
                     })
                 }

@@ -10,8 +10,11 @@ class Hall extends Model
    protected $fillable = [
     'number',
     'seats',
+    'standartCosts',
+    'vipCosts',
+    'isActive',
    ];
    public function seances(){
-      return $this->hasMany(Seance::class, 'number', 'hall');
+      return $this->hasMany(Seance::class, 'hall', 'number');
   }
 }
