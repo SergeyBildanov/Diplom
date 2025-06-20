@@ -50,8 +50,8 @@ export function sendRequest(url,method, data, callback) {
 }
 
 document.addEventListener("DOMContentLoaded", ()=>{
-    if (window.ыcriptInitialized) return;
-    window.ыcriptInitialized = true;
+    if (window.scriptInitialized) return;
+    window.scriptInitialized = true;
     if(document.querySelector(".admin-index")){
         const headers = Array.from(document.querySelectorAll('.conf-step__header'));
         headers.forEach(header => header.addEventListener('click', () => {
