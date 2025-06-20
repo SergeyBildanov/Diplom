@@ -5,10 +5,11 @@
 ## Как запустить
 
 1. Открыть терминал
-2. Ввести команду: npm install
-3. Ввести команду: composer install
-3. Ввести команлу: npm run build
-4. Ввести команду php artisan serve
+2. Ввести команду: composer install
+3. Ввести команду: npm install
+4. Ввести команлу: npm run build
+5. Ввести команду php artisan migrate
+6. Ввести команду php artisan serve
 
 ## Как войти в учетную запись администратора:
 ### Стандартная УЗ:
