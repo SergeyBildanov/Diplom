@@ -24,10 +24,19 @@ function Timeline({hall}){
     });
     
     const clickHandler = (e)=>{
+        if(e.target.className.includes("conf-step__seances-movie")){
+            let target = e.target.classList.contains("conf-step__seances-movie")?e.target:e.target.closest(".conf-step__seances-movie");
+            let id = target.dataset.id;
+            sendRequest(`/seance/delete/${id}`, "DELETE", null, ()=>{
+                window.location.reload();
+            })
+            return;
+        }
         let hall = e.target.dataset.id;
         let form = document.querySelector(".add-seance-popup");
         form.dataset.id = hall;
         form.classList.add("active");
+        
     };
 
     const incrementHandler = event =>{
@@ -66,8 +75,8 @@ function Timeline({hall}){
             <div className="seance-day ">{myState.currentDay}</div>
             <div class="change-day " value=">>" onClick={incrementHandler}> {">>"} </div>
         </div>
-        <div class="conf-step__seances-hall">
-            <h3 class="conf-step__seances-title">Зал {hall["number"]}</h3>
+        <div className="conf-step__seances-hall">
+            <h3 className="conf-step__seances-title">Зал {hall["number"]}</h3>
             <div className="conf-step__seances-timeline" data-id={hall["number"]} onClick={clickHandler}>
                 {
                     myState.currentMovies.map((item, index)=>{

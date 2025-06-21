@@ -9,13 +9,14 @@ function Timelines(){
     useEffect((
         
     )=>{
-        let data = {isActive:0};
+        let data = {"isActive": 0};
         let url = "/halls";
         let xhr = new XMLHttpRequest();
         let token = document.getElementsByTagName('meta')['csrf-token'].content;
         xhr.addEventListener("readystatechange", ()=>{
             if(xhr.readyState===xhr.DONE && xhr.status==200){
-                setHalls(JSON.parse(xhr.response));
+                let seats = JSON.parse(xhr.response).filter(item => !item.isActive);
+                setHalls(seats);
             }1
         })
             
